@@ -1,21 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 const SimpleInput = (props) => {
   const [enteredName, setEnteredName] = useState('')
   const [enteredNameTouched, setEnteredNameTouched] = useState(false) //use to check whether user was tried to enter something or not
-  const [formIsValid, setFormIsValid] = useState(false)
 
   const enteredNameIsValid = enteredName.trim() !== ''
   const nameInputIsInvalid = !enteredNameIsValid && enteredNameTouched
 
-  useEffect(() => {
-    if(enteredNameIsValid) {
-      setFormIsValid(true)
-    }
-    else {
-      setFormIsValid(false)
-    }
-  }, [enteredNameIsValid])
+  let formIsValid = false
+
+  if(enteredNameIsValid) {
+    formIsValid = true
+  }
 
   const nameInputChangeHandler = (event) => {
     setEnteredName(event.target.value)
