@@ -8,6 +8,11 @@ const SimpleInput = (props) => {
 
   const nameInputChangeHandler = (event) => {
     setEnteredName(event.target.value)
+
+    // disappear the error msg (if it is displaying)
+    if(event.target.value.trim() !== '') {
+      setEnteredNameIsValid(true)
+    }
   }
 
   // validate when input is lose focus (when user focus the input field and leave it as empty)
